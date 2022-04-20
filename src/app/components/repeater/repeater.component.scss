@@ -1,0 +1,27 @@
+$blue: #4773d0;
+
+:host {
+  display: block;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  ::ng-deep {
+    .repeater {
+      &__item {
+        border: 1px solid #ccc;
+        font-size: 24px;
+        padding: 6px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+
+        &:hover {
+          border-color: $blue;
+        }
+      }
+    }
+  }
+}

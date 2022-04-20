@@ -1,0 +1,77 @@
+<div *ngIf="data$ | async as data; else loading">
+  <ng-container *ngIf="data.length; else noItems">
+    <div class="sorting__wrap">
+      <div class="sorting__item">
+        <p>No Sorting</p>
+        <br/>
+        <app-repeater
+          *ngFor="let item of data"
+          class="repeater"
+        >
+          <div class="repeater__item">
+            <div>{{item.name}}</div>
+            <div>{{item.price}}</div>
+          </div>
+        </app-repeater>
+      </div>
+      <div class="sorting__item">
+        <p>Sorting by name (asc)</p>
+        <br/>
+        <app-repeater
+          *ngFor="let item of data | customSort: '-name'"
+          class="repeater"
+        >
+          <div class="repeater__item">
+            <div>{{item.name}}</div>
+            <div>{{item.price}}</div>
+          </div>
+        </app-repeater>
+      </div>
+      <div class="sorting__item">
+        <p>name first (desc) and on top of that sort by price</p>
+        <br/>
+        <app-repeater
+          *ngFor="let item of data | customSort: ['name', '-price']"
+          class="repeater"
+        >
+          <div class="repeater__item">
+            <div>{{item.name}}</div>
+            <div>{{item.price}}</div>
+          </div>
+        </app-repeater>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #noItems>
+  <p class="no-data">No data found</p>
+</ng-template>
+
+<ng-template #loading>
+  <p class="data-loading">loading... (will load in 2 sec)</p>
+</ng-template>
+
+
+<!--<div class="sorting">-->
+<!--  <div class="sorting__checkbox">-->
+<!--    <input-->
+<!--      type="checkbox"-->
+<!--      value="name"-->
+<!--      (change)="onInputChange($event)"-->
+<!--      id="name"-->
+<!--      class="sorting__input"-->
+<!--    />-->
+<!--    <label for="name" class="sorting__label">Name</label>-->
+<!--  </div>-->
+<!--  <div class="sorting__checkbox">-->
+<!--    <input-->
+<!--      type="checkbox"-->
+<!--      value="price"-->
+<!--      (change)="onInputChange($event)"-->
+<!--      id="price"-->
+<!--      class="sorting__input"-->
+<!--    />-->
+<!--    <label for="price" class="sorting__label">Price</label>-->
+<!--  </div>-->
+<!--</div>-->

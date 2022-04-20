@@ -1,0 +1,19 @@
+<div *ngIf="data$ | async as data; else loading">
+  <ng-container *ngIf="data.length; else noItems">
+    <app-repeater
+      *ngFor="let item of data"
+      (itemClick)="showClicked($event)"
+      class="repeater"
+    >
+      <div class="repeater__item">{{item.name}}</div>
+    </app-repeater>
+  </ng-container>
+</div>
+
+<ng-template #noItems>
+  <p class="no-data">No data found</p>
+</ng-template>
+
+<ng-template #loading>
+  <p class="data-loading">loading... (will load in 2 sec)</p>
+</ng-template>

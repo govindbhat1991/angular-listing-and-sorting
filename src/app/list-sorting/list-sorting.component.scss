@@ -1,0 +1,23 @@
+$blue: #4773d0;
+$item-hover-color: $blue;
+
+.no-data, .data-loading {
+  text-align: center;
+  font-size: 18px;
+}
+
+.sorting {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+
+  &__wrap {
+    display: flex;
+    margin: 0 -15px;
+  }
+
+  &__item {
+    flex: 0 0 33.33%;
+    padding: 0 15px;
+  }
+}
